@@ -1,18 +1,19 @@
 import React from 'react';
-import {connect} from "react-redux"
+import {connect ,useDispatch as dispatch} from "react-redux"
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-
-const App = props => {
+import{addItem, removeItem} from './actions/Actions'
+const App = (props) => {
 
   const removeFeature = item => {
-    // dispatch an action here to remove an item
+    props.removeItem(item)
   };
 
-  const buyItem = item => {
+  const addFeature = item => {
     
+    props.addItem(item)
     // dipsatch an action here to add an item
   };
 
@@ -20,15 +21,17 @@ const App = props => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+        <AddedFeatures removeItem={removeFeature}car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <AdditionalFeatures addItem={addFeature} additionalFeatures={props.additionalFeatures} />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
+
+
 
 const mapStateToProps = state => {
   return {
@@ -37,6 +40,12 @@ const mapStateToProps = state => {
     additionalPrice: state.additionalPrice
   }
 }
-export default connect(
-  mapStateToProps
+export default connect( ()=> 
+mapStateToProps,
+{
+  addItem,
+  removeItem
+}
 )(App);
+
+
