@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect ,useDispatch as dispatch} from "react-redux"
+import {connect} from "react-redux"
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
@@ -21,7 +21,7 @@ const App = (props) => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures removeItem={removeFeature}car={props.car} />
+        <AddedFeatures removeItem={removeFeature} car={props.car} />
       </div>
       <div className="box">
         <AdditionalFeatures addItem={addFeature} additionalFeatures={props.additionalFeatures} />
