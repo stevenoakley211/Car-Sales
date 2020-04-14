@@ -5,9 +5,12 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import{addItem, removeItem} from './actions/Actions'
+import { useSelector } from 'react-redux/lib/hooks/useSelector';
+import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
 
 const App = (props) => {
 
+  
   const removeFeature = item => {
     props.removeItem(item)
   };
@@ -39,6 +42,8 @@ const mapStateToProps = state => {
     additionalPrice: state.additionalPrice
   }
 }
+
+
 export default connect( ()=> 
 mapStateToProps,
 {
