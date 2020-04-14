@@ -5,6 +5,7 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import{addItem, removeItem} from './actions/Actions'
+
 const App = (props) => {
 
   const removeFeature = item => {
@@ -12,9 +13,7 @@ const App = (props) => {
   };
 
   const addFeature = item => {
-    
     props.addItem(item)
-    // dipsatch an action here to add an item
   };
 
   return (
