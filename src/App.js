@@ -5,8 +5,6 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import{addItem, removeItem} from './actions/Actions'
-import { useSelector } from 'react-redux/lib/hooks/useSelector';
-import { useDispatch } from 'react-redux/lib/hooks/useDispatch';
 
 const App = (props) => {
 
@@ -20,12 +18,12 @@ const App = (props) => {
   };
 
   return (
-    <div className="boxes">
-      <div className="box">
+    <div className="container">
+      <div className="box card">
         <Header car={props.car} />
         <AddedFeatures removeItem={removeFeature} car={props.car} />
       </div>
-      <div className="box">
+      <div className="box card">
         <AdditionalFeatures addItem={addFeature} additionalFeatures={props.additionalFeatures} />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
@@ -42,7 +40,6 @@ const mapStateToProps = state => {
     additionalPrice: state.additionalPrice
   }
 }
-
 
 export default connect( ()=> 
 mapStateToProps,
